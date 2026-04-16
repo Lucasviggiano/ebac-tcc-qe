@@ -1,0 +1,18 @@
+[
+  {
+    "id": 1,
+    "perfil": "usuario_ativo_valido",
+    "username": "cliente@ebac.art.br",
+    "password": "123456",
+    "status": "ativo",
+    "descricao": "Usuário válido para testes de login com sucesso"
+  },
+  {
+    "id": 2,
+    "perfil": "admin_cupons",
+    "username": "admin_ebac",
+    "password": "admin_ebac",
+    "status": "ativo",
+    "descricao": "Usuário administrador para autenticação na API de cupons"
+  }
+]

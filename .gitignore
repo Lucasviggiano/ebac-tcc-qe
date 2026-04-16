@@ -1,0 +1,67 @@
+# Dependencies
+node_modules/
+**/node_modules/
+
+# Environment variables
+.env
+**/.env
+!.env.example
+
+# Test artifacts
+coverage/
+**/coverage/
+reports/
+automation/UI/cypress/videos/
+automation/UI/cypress/screenshots/
+automation/UI/cypress/downloads/
+automation/Mobile/reports/allure-results/
+automation/Mobile/reports/allure-report/
+performance/k6/reports/
+
+# Keep only report folder guides under version control
+!reports/
+reports/*
+!reports/README.md
+!reports/summary-*.md
+
+!reports/api/
+reports/api/*
+!reports/api/api-report-*.md
+
+!reports/ui/
+reports/ui/*
+!reports/ui/ui-report-*.md
+
+!reports/mobile/
+reports/mobile/*
+!reports/mobile/mobile-report-*.md
+
+!reports/performance/
+reports/performance/*
+!reports/performance/performance-report-*.md
+
+!reports/evidence/
+reports/evidence/*
+!reports/evidence/evidence-index-*.md
+
+!reports/square/
+reports/square/*
+!reports/square/README.md
+!reports/square/scorecard-*.md
+!reports/square/scorecard-*.json
+
+# Keep only k6 reports README under version control
+!performance/k6/reports/
+performance/k6/reports/*
+!performance/k6/reports/README.md
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+node_modules

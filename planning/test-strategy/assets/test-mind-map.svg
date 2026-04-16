@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1100" viewBox="0 0 1600 1100">
+  <defs>
+    <style>
+      .title { font: 700 34px Arial, sans-serif; fill: #102a43; }
+      .node { font: 600 20px Arial, sans-serif; fill: #102a43; }
+      .leaf { font: 400 16px Arial, sans-serif; fill: #334e68; }
+      .line { stroke: #829ab1; stroke-width: 2; fill: none; }
+      .box { fill: #f0f4f8; stroke: #bcccdc; stroke-width: 1.5; rx: 10; }
+      .main { fill: #d9e2ec; stroke: #627d98; stroke-width: 2; rx: 12; }
+    </style>
+  </defs>
+
+  <text x="800" y="55" text-anchor="middle" class="title">Mapa Mental - Estrategia de Teste (EBAC Shop)</text>
+
+  <rect x="660" y="100" width="280" height="56" class="main"/>
+  <text x="800" y="136" text-anchor="middle" class="node">Estrategia de Teste</text>
+
+  <path d="M800 156 C800 210, 220 210, 220 250" class="line"/>
+  <path d="M800 156 C800 210, 530 210, 530 250" class="line"/>
+  <path d="M800 156 C800 210, 800 210, 800 250" class="line"/>
+  <path d="M800 156 C800 210, 1070 210, 1070 250" class="line"/>
+  <path d="M800 156 C800 210, 1380 210, 1380 250" class="line"/>
+
+  <rect x="90" y="250" width="260" height="44" class="box"/>
+  <text x="220" y="278" text-anchor="middle" class="node">Objetivos</text>
+  <text x="100" y="320" class="leaf">- Qualidade funcional</text>
+  <text x="100" y="346" class="leaf">- Confiabilidade de entrega</text>
+  <text x="100" y="372" class="leaf">- Reducao de regressao</text>
+
+  <rect x="400" y="250" width="260" height="44" class="box"/>
+  <text x="530" y="278" text-anchor="middle" class="node">Escopo</text>
+  <text x="410" y="320" class="leaf">- US-0001 Carrinho</text>
+  <text x="410" y="346" class="leaf">- US-0002 Login</text>
+  <text x="410" y="372" class="leaf">- US-0003 API Cupons</text>
+  <text x="410" y="398" class="leaf">- Minha Conta / Pedidos</text>
+
+  <rect x="670" y="250" width="260" height="44" class="box"/>
+  <text x="800" y="278" text-anchor="middle" class="node">Fases e Tecnicas</text>
+  <text x="680" y="320" class="leaf">- Planejamento e risco</text>
+  <text x="680" y="346" class="leaf">- Gherkin e casos de teste</text>
+  <text x="680" y="372" class="leaf">- Particao e valor limite</text>
+  <text x="680" y="398" class="leaf">- Tabela de decisao</text>
+
+  <rect x="940" y="250" width="260" height="44" class="box"/>
+  <text x="1070" y="278" text-anchor="middle" class="node">Plataformas</text>
+  <text x="950" y="320" class="leaf">- Web</text>
+  <text x="950" y="346" class="leaf">- API</text>
+  <text x="950" y="372" class="leaf">- Mobile Android</text>
+
+  <rect x="1250" y="250" width="260" height="44" class="box"/>
+  <text x="1380" y="278" text-anchor="middle" class="node">Ferramentas e CI</text>
+  <text x="1260" y="320" class="leaf">- Cypress</text>
+  <text x="1260" y="346" class="leaf">- Supertest + AJV</text>
+  <text x="1260" y="372" class="leaf">- Appium + WebdriverIO</text>
+  <text x="1260" y="398" class="leaf">- k6 + GitHub Actions</text>
+
+  <rect x="550" y="500" width="500" height="230" class="main"/>
+  <text x="800" y="536" text-anchor="middle" class="node">Evidencias esperadas</text>
+  <text x="580" y="576" class="leaf">- Screenshots de falha e de sucesso</text>
+  <text x="580" y="604" class="leaf">- Videos do Cypress</text>
+  <text x="580" y="632" class="leaf">- Allure mobile (results/report)</text>
+  <text x="580" y="660" class="leaf">- Sumario k6 (json)</text>
+  <text x="580" y="688" class="leaf">- Logs de pipeline no GitHub Actions</text>
+</svg>

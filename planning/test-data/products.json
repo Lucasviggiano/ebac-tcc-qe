@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "nome": "Produto Faixa 10",
+    "sku": "PROD-FAIXA-10",
+    "preco": 200.00,
+    "quantidade_valida": 1,
+    "quantidade_limite": 10,
+    "quantidade_invalida": 11,
+    "descricao": "Produto usado para validar desconto de 10 por cento"
+  },
+  {
+    "id": 2,
+    "nome": "Produto Faixa 15",
+    "sku": "PROD-FAIXA-15",
+    "preco": 601.00,
+    "quantidade_valida": 1,
+    "quantidade_limite": 10,
+    "quantidade_invalida": 11,
+    "descricao": "Produto usado para validar desconto de 15 por cento"
+  },
+  {
+    "id": 3,
+    "nome": "Produto Sem Cupom",
+    "sku": "PROD-SEM-CUPOM",
+    "preco": 199.99,
+    "quantidade_valida": 1,
+    "quantidade_limite": 10,
+    "quantidade_invalida": 11,
+    "descricao": "Produto usado para validar ausência de cupom abaixo de 200 reais"
+  },
+  {
+    "id": 4,
+    "nome": "Produto Acima Limite",
+    "sku": "PROD-ACIMA-LIMITE",
+    "preco": 991.00,
+    "quantidade_valida": 1,
+    "quantidade_limite": 10,
+    "quantidade_invalida": 11,
+    "descricao": "Produto usado para validar bloqueio acima de 990 reais"
+  }
+]

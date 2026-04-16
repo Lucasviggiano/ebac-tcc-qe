@@ -1,0 +1,67 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "QA: Instalar dependencias (todas as camadas)",
+      "type": "shell",
+      "command": "npm ci; npm --prefix automation/UI ci; npm --prefix automation/API ci; npm --prefix automation/Mobile ci",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "QA: Rodar tudo (UI + API + Mobile smoke + k6)",
+      "type": "shell",
+      "command": "npm run test:all",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "group": {
+        "kind": "test",
+        "isDefault": true
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "QA: UI (Cypress)",
+      "type": "shell",
+      "command": "npm run test:ui",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "group": "test",
+      "problemMatcher": []
+    },
+    {
+      "label": "QA: API (Supertest/Jest)",
+      "type": "shell",
+      "command": "npm run test:api",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "group": "test",
+      "problemMatcher": []
+    },
+    {
+      "label": "QA: Mobile smoke (Android/Appium)",
+      "type": "shell",
+      "command": "npm run test:mobile:smoke",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "group": "test",
+      "problemMatcher": []
+    },
+    {
+      "label": "QA: Performance (k6)",
+      "type": "shell",
+      "command": "npm run test:performance",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "group": "test",
+      "problemMatcher": []
+    }
+  ]
+}

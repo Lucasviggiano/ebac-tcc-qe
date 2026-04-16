@@ -1,0 +1,34 @@
+[
+  {
+    "id": 1,
+    "code": "EBAC10",
+    "amount": "10",
+    "discount_type": "percent",
+    "description": "Cupom de 10 por cento para compras elegíveis",
+    "status": "valido"
+  },
+  {
+    "id": 2,
+    "code": "EBAC15",
+    "amount": "15",
+    "discount_type": "percent",
+    "description": "Cupom de 15 por cento para compras acima de 600 reais",
+    "status": "valido"
+  },
+  {
+    "id": 3,
+    "code": "EBAC_DUPLICADO",
+    "amount": "20",
+    "discount_type": "percent",
+    "description": "Cupom usado para validar regra de duplicidade",
+    "status": "existente"
+  },
+  {
+    "id": 4,
+    "code": "",
+    "amount": "",
+    "discount_type": "",
+    "description": "",
+    "status": "invalido"
+  }
+]

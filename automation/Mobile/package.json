@@ -1,0 +1,11 @@
+{
+  "scripts": {
+    "test": "wdio run wdio.conf.js",
+    "test:android": "wdio run configs/android.conf.js",
+    "test:smoke": "wdio run configs/android.conf.js --spec ./tests/catalog/catalog.smoke.spec.js",
+    "test:catalog": "wdio run wdio.conf.js",
+    "allure:generate": "npx allure-commandline generate reports/allure-results --clean -o reports/allure-report",
+    "allure:open": "npx allure-commandline open reports/allure-report",
+    "wdio": "wdio run ./wdio.conf.js"
+  }
+}

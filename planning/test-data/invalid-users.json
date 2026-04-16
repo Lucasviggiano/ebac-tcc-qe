@@ -1,0 +1,34 @@
+[
+  {
+    "id": 1,
+    "perfil": "senha_invalida",
+    "username": "cliente@ebac.art.br",
+    "password": "senha_errada",
+    "status": "ativo",
+    "descricao": "Usuário ativo com senha inválida para teste negativo de autenticação"
+  },
+  {
+    "id": 2,
+    "perfil": "usuario_inativo",
+    "username": "usuario.inativo@ebac.art.br",
+    "password": "123456",
+    "status": "inativo",
+    "descricao": "Usuário inativo para validar bloqueio de acesso mesmo com credenciais válidas"
+  },
+  {
+    "id": 3,
+    "perfil": "login_inexistente",
+    "username": "naoexiste@ebac.art.br",
+    "password": "123456",
+    "status": "inexistente",
+    "descricao": "Usuário inexistente para validar mensagem de erro de autenticação"
+  },
+  {
+    "id": 4,
+    "perfil": "admin_cupons_invalido",
+    "username": "admin_ebac",
+    "password": "senha_incorreta",
+    "status": "ativo",
+    "descricao": "Credencial inválida para teste negativo da API de cupons"
+  }
+]

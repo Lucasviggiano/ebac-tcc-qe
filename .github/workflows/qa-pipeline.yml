@@ -1,0 +1,308 @@
+name: QA Complete Pipeline
+
+on:
+  push:
+    branches:
+      - main
+      - master
+      - develop
+      - feat/**
+      - codex/**
+  pull_request:
+    branches:
+      - main
+      - master
+      - develop
+  workflow_dispatch:
+    inputs:
+      run_performance:
+        description: "Executar testes de performance (k6)"
+        required: true
+        default: true
+        type: boolean
+      run_mobile:
+        description: "Executar testes Mobile Android (Appium + WDIO)"
+        required: true
+        default: true
+        type: boolean
+
+permissions:
+  contents: read
+
+concurrency:
+  group: qa-pipeline-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  BASE_URL: ${{ vars.BASE_URL != '' && vars.BASE_URL || 'http://lojaebac.ebaconline.art.br' }}
+  COUPONS_PATH: ${{ vars.COUPONS_PATH != '' && vars.COUPONS_PATH || '/wp-json/wc/v3/coupons' }}
+  API_BASIC_USER: ${{ secrets.API_BASIC_USER != '' && secrets.API_BASIC_USER || 'admin_ebac' }}
+  API_BASIC_PASS: ${{ secrets.API_BASIC_PASS != '' && secrets.API_BASIC_PASS || '@admin!&b@c!2022' }}
+
+jobs:
+  api-tests:
+    name: API Tests - Supertest/Jest
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: automation/API/package-lock.json
+
+      - name: Install dependencies
+        working-directory: automation/API
+        run: npm ci
+
+      - name: Prepare log folder
+        run: mkdir -p reports/ci/api
+
+      - name: Run API suite (full)
+        working-directory: automation/API
+        shell: bash
+        run: |
+          set -o pipefail
+          npm run test:api:all 2>&1 | tee ../../reports/ci/api/api-tests.log
+
+      - name: Upload API evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: api-evidence
+          path: |
+            reports/ci/api
+            automation/API/coverage
+          if-no-files-found: ignore
+          retention-days: 14
+
+  ui-tests:
+    name: UI Tests - Cypress
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Run Cypress (Chrome)
+        uses: cypress-io/github-action@v6
+        with:
+          working-directory: automation/UI
+          browser: chrome
+          command: npm run test:ui
+
+      - name: Upload UI evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ui-evidence
+          path: |
+            automation/UI/cypress/screenshots
+            automation/UI/cypress/videos
+            automation/UI/cypress/downloads
+          if-no-files-found: ignore
+          retention-days: 14
+
+  performance-tests:
+    name: Performance Tests - k6
+    if: ${{ github.event_name != 'workflow_dispatch' || inputs.run_performance }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup k6
+        uses: grafana/setup-k6-action@v1
+
+      - name: Prepare report and log folders
+        run: |
+          mkdir -p performance/k6/reports
+          mkdir -p reports/ci/performance
+
+      - name: Run k6 scenarios (login + catalog)
+        shell: bash
+        run: |
+          set +e
+          k6 run --summary-export=performance/k6/reports/login-summary.json performance/k6/login-performance.js 2>&1 | tee reports/ci/performance/k6-login.log
+          LOGIN_EXIT=${PIPESTATUS[0]}
+
+          k6 run --summary-export=performance/k6/reports/catalog-summary.json performance/k6/catalog-performance.js 2>&1 | tee reports/ci/performance/k6-catalog.log
+          CATALOG_EXIT=${PIPESTATUS[0]}
+
+          echo "K6_LOGIN_EXIT=$LOGIN_EXIT" >> $GITHUB_ENV
+          echo "K6_CATALOG_EXIT=$CATALOG_EXIT" >> $GITHUB_ENV
+
+          if [ "$LOGIN_EXIT" -ne 0 ] || [ "$CATALOG_EXIT" -ne 0 ]; then
+            exit 1
+          fi
+
+      - name: Upload performance evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: performance-evidence
+          path: |
+            performance/k6/reports
+            reports/ci/performance
+          if-no-files-found: ignore
+          retention-days: 14
+
+  mobile-android-smoke:
+    name: Mobile Android Smoke - Appium/WDIO
+    if: ${{ github.event_name == 'workflow_dispatch' && inputs.run_mobile }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: automation/Mobile/package-lock.json
+
+      - name: Run Android emulator and mobile smoke
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 30
+          arch: x86_64
+          profile: pixel_4
+          script: |
+            mkdir -p reports/ci/mobile
+            cd automation/Mobile
+            npm ci
+            npm install -g appium@2
+            appium driver install uiautomator2 || true
+            appium --base-path / --port 4723 > ../../reports/ci/mobile/appium.log 2>&1 &
+            APPIUM_PID=$!
+            sleep 15
+
+            set +e
+            npm run test:smoke 2>&1 | tee ../../reports/ci/mobile/mobile-smoke.log
+            TEST_EXIT=${PIPESTATUS[0]}
+
+            npm run allure:generate 2>&1 | tee ../../reports/ci/mobile/allure-generate.log
+            ALLURE_EXIT=${PIPESTATUS[0]}
+
+            kill $APPIUM_PID || true
+
+            if [ "$TEST_EXIT" -ne 0 ]; then
+              exit "$TEST_EXIT"
+            fi
+
+            if [ "$ALLURE_EXIT" -ne 0 ]; then
+              exit "$ALLURE_EXIT"
+            fi
+
+      - name: Upload mobile evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: mobile-evidence
+          path: |
+            reports/ci/mobile
+            automation/Mobile/reports/allure-results
+            automation/Mobile/reports/allure-report
+          if-no-files-found: ignore
+          retention-days: 14
+
+  square-gate:
+    name: SQuaRE Gate - ISO/IEC 25010 + 25023 + 25040
+    if: always()
+    needs:
+      - api-tests
+      - ui-tests
+      - performance-tests
+      - mobile-android-smoke
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Download API evidence
+        if: always()
+        uses: actions/download-artifact@v4
+        with:
+          name: api-evidence
+          path: artifacts/api-evidence
+        continue-on-error: true
+
+      - name: Download performance evidence
+        if: always()
+        uses: actions/download-artifact@v4
+        with:
+          name: performance-evidence
+          path: artifacts/performance-evidence
+        continue-on-error: true
+
+      - name: Download mobile evidence
+        if: always()
+        uses: actions/download-artifact@v4
+        with:
+          name: mobile-evidence
+          path: artifacts/mobile-evidence
+        continue-on-error: true
+
+      - name: Download UI evidence
+        if: always()
+        uses: actions/download-artifact@v4
+        with:
+          name: ui-evidence
+          path: artifacts/ui-evidence
+        continue-on-error: true
+
+      - name: Run SQuaRE gate
+        id: square_gate
+        shell: bash
+        env:
+          SQUARE_API_STATUS: ${{ needs.api-tests.result }}
+          SQUARE_UI_STATUS: ${{ needs.ui-tests.result }}
+          SQUARE_PERF_STATUS: ${{ needs.performance-tests.result }}
+          SQUARE_MOBILE_STATUS: ${{ needs.mobile-android-smoke.result }}
+          SQUARE_EXPECT_MOBILE: ${{ github.event_name == 'workflow_dispatch' && inputs.run_mobile }}
+          SQUARE_API_LOG_PATH: artifacts/api-evidence/reports/ci/api/api-tests.log
+          SQUARE_PERF_LOGIN_SUMMARY_PATH: artifacts/performance-evidence/performance/k6/reports/login-summary.json
+          SQUARE_PERF_CATALOG_SUMMARY_PATH: artifacts/performance-evidence/performance/k6/reports/catalog-summary.json
+        run: |
+          set +e
+          node tools/square-evaluator.js --gate
+          SQUARE_EXIT_CODE=$?
+          echo "SQUARE_EXIT_CODE=$SQUARE_EXIT_CODE" >> $GITHUB_ENV
+          exit 0
+
+      - name: Upload SQuaRE evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: square-evidence
+          path: reports/square
+          if-no-files-found: ignore
+          retention-days: 14
+
+      - name: Enforce gate result
+        if: always()
+        shell: bash
+        run: |
+          if [ "${SQUARE_EXIT_CODE}" -ne 0 ]; then
+            echo "SQuaRE gate reprovado (exit=${SQUARE_EXIT_CODE})."
+            exit 1
+          fi
+          echo "SQuaRE gate aprovado."

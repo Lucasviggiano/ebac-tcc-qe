@@ -1,0 +1,26 @@
+{
+  "name": "tcc-ebac-qe-api-tests",
+  "version": "1.0.0",
+  "description": "Automacao de API de cupons com Supertest, Jest e validacao de contrato",
+  "private": true,
+  "scripts": {
+    "test:api": "jest tests/coupons tests/contracts --runInBand --verbose",
+    "test:api:all": "jest --runInBand --verbose",
+    "test:api:smoke": "jest tests/smoke --runInBand --verbose",
+    "test:api:products": "jest tests/products --runInBand --verbose",
+    "test:api:cart": "jest tests/cart --runInBand --verbose",
+    "test:api:checkout": "jest tests/checkout --runInBand --verbose",
+    "test:api:coupons": "jest tests/coupons --runInBand --verbose",
+    "test:api:contracts": "jest tests/contracts --runInBand --verbose",
+    "test:api:watch": "jest --watch",
+    "test:api:coverage": "jest --coverage"
+  },
+  "author": "Lucas Viggiano",
+  "license": "ISC",
+  "devDependencies": {
+    "ajv": "^8.17.1",
+    "dotenv": "^16.4.5",
+    "jest": "^29.7.0",
+    "supertest": "^7.1.1"
+  }
+}
