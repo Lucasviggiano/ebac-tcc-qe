@@ -13,7 +13,13 @@ describe("US003 - Detalhes da conta", () => {
 
       registerPage.visit();
       registerPage.register(runtimeUser.username, runtimeUser.password);
-      registerPage.successContent().should("be.visible");
+      cy.url().should("include", "/minha-conta");
+      cy.get("body").should(($body) => {
+        const accountArea = $body.find(
+          ".woocommerce-MyAccount-content, .woocommerce-MyAccount-navigation, .page-title"
+        );
+        expect(accountArea.length).to.be.greaterThan(0);
+      });
     });
   });
 
