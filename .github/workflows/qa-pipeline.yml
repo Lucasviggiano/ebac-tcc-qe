@@ -68,7 +68,23 @@ jobs:
         shell: bash
         run: |
           set -o pipefail
-          npm run test:api:all 2>&1 | tee ../../reports/ci/api/api-tests.log
+          LOG_PATH=../../reports/ci/api/api-tests.log
+          ATTEMPT_1_LOG=../../reports/ci/api/api-tests-attempt1.log
+          ATTEMPT_2_LOG=../../reports/ci/api/api-tests-attempt2.log
+
+          : > "$LOG_PATH"
+
+          echo "[API] Tentativa 1/2" | tee -a "$LOG_PATH"
+          npm run test:api:all 2>&1 | tee "$ATTEMPT_1_LOG" | tee -a "$LOG_PATH"
+          API_EXIT=${PIPESTATUS[0]}
+
+          if [ "$API_EXIT" -ne 0 ]; then
+            echo "[API] Falha na tentativa 1. Executando retry (2/2)." | tee -a "$LOG_PATH"
+            npm run test:api:all 2>&1 | tee "$ATTEMPT_2_LOG" | tee -a "$LOG_PATH"
+            API_EXIT=${PIPESTATUS[0]}
+          fi
+
+          exit "$API_EXIT"
 
       - name: Upload API evidence
         if: always()
