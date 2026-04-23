@@ -200,40 +200,7 @@ jobs:
           arch: x86_64
           profile: pixel_4
           script: |
-            bash -eo pipefail <<'EOF'
-            mkdir -p reports/ci/mobile
-            cd automation/Mobile
-
-            npm ci
-
-            # Keep Appium major aligned with automation/Mobile lockfile (Appium 3)
-            npx appium driver install uiautomator2 || true
-            npx appium --base-path / --port 4723 > ../../reports/ci/mobile/appium.log 2>&1 &
-            APPIUM_PID=$!
-
-            cleanup() {
-              kill "$APPIUM_PID" 2>/dev/null || true
-            }
-            trap cleanup EXIT
-
-            sleep 15
-
-            set +e
-            npm run test:smoke 2>&1 | tee ../../reports/ci/mobile/mobile-smoke.log
-            TEST_EXIT=${PIPESTATUS[0]}
-
-            npm run allure:generate 2>&1 | tee ../../reports/ci/mobile/allure-generate.log
-            ALLURE_EXIT=${PIPESTATUS[0]}
-            set -e
-
-            if [ "$TEST_EXIT" -ne 0 ]; then
-              exit "$TEST_EXIT"
-            fi
-
-            if [ "$ALLURE_EXIT" -ne 0 ]; then
-              exit "$ALLURE_EXIT"
-            fi
-            EOF
+            bash automation/Mobile/run-mobile-smoke-ci.sh
 
       - name: Upload mobile evidence
         if: always()
