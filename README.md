@@ -2,6 +2,8 @@
 
 Projeto de Trabalho de Conclusao de Curso da trilha de Quality Engineering (EBAC), com foco na validacao do e-commerce EBAC Shop por meio de planejamento de testes, automacao multi-camada e pipeline de CI.
 
+[versão do TCC em pdf](documentation/Trabalho%20de%20conclusao%20-%20Engenheiro%20de%20Qualidade%20de%20software%20(2)%20(1).pdf)
+
 ## Sumario
 
 - [Visao geral](#visao-geral)
