@@ -149,11 +149,7 @@ jobs:
           HTTP_PROXY: ""
           HTTPS_PROXY: ""
           ALL_PROXY: ""
-          http_proxy: ""
-          https_proxy: ""
-          all_proxy: ""
           NO_PROXY: lojaebac.ebaconline.art.br,localhost,127.0.0.1,::1
-          no_proxy: lojaebac.ebaconline.art.br,localhost,127.0.0.1,::1
         run: |
           set +e
           k6 run --summary-export=performance/k6/reports/login-summary.json performance/k6/login-performance.js 2>&1 | tee reports/ci/performance/k6-login.log
