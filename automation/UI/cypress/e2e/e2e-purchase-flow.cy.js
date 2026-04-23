@@ -3,15 +3,23 @@ import { cartActions } from "../support/actions/cart.actions";
 import { checkoutActions } from "../support/actions/checkout.actions";
 import { checkoutPage } from "../support/pages/checkout.page";
 import { loginPage } from "../support/pages/login.page";
+import { registerPage } from "../support/pages/register.page";
 
 describe("E2E - Fluxo de compra", () => {
-  let users;
+  let runtimeUser;
   let products;
   let checkoutData;
 
   before(() => {
     cy.fixture("users").then((data) => {
-      users = data;
+      runtimeUser = {
+        username: `qa.e2e.${Date.now()}@ebac.com`,
+        password: data.registerUser.password
+      };
+
+      registerPage.visit();
+      registerPage.register(runtimeUser.username, runtimeUser.password);
+      registerPage.successContent().should("be.visible");
     });
     cy.fixture("products").then((data) => {
       products = data;
@@ -22,7 +30,7 @@ describe("E2E - Fluxo de compra", () => {
   });
 
   it("deve autenticar, adicionar item e avancar para checkout", () => {
-    loginActions.loginWithCredentials(users.validUser.username, users.validUser.password);
+    loginActions.loginWithCredentials(runtimeUser.username, runtimeUser.password);
     loginPage.accountPanel().should("be.visible");
 
     cartActions.addProductFromStore(products.sportsBra);
