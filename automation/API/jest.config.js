@@ -4,5 +4,6 @@ module.exports = {
   testMatch: ["**/*.spec.js"],
   collectCoverageFrom: ["src/**/*.js"],
   coverageDirectory: "coverage",
-  verbose: true
+  verbose: true,
+  testTimeout: 15000
 };

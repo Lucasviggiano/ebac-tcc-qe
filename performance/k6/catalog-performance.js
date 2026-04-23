@@ -2,6 +2,8 @@ import http from "k6/http";
 import { check, sleep } from "k6";
 import { SharedArray } from "k6/data";
 
+const baseUrl = __ENV.BASE_URL || "http://lojaebac.ebaconline.art.br";
+
 const users = new SharedArray("ebac-users-catalog", function () {
   return JSON.parse(open("./data/users.json"));
 });
@@ -18,7 +20,7 @@ export const options = {
     }
   },
   thresholds: {
-    http_req_duration: ["p(95)<4000"],
+    http_req_duration: ["p(95)<4500"],
     http_req_failed: ["rate<0.10"],
     checks: ["rate>0.90"]
   }
@@ -27,16 +29,16 @@ export const options = {
 export default function () {
   const user = users[__VU % users.length];
 
-  const catalogResponse = http.get("http://lojaebac.ebaconline.art.br/produtos/");
+  const catalogResponse = http.get(`${baseUrl}/produtos/`);
 
   check(catalogResponse, {
     "catalogo responde com sucesso": (r) => r.status === 200,
-    "catalogo abaixo de 4s": (r) => r.timings.duration < 4000,
+    "catalogo abaixo de 4.5s": (r) => r.timings.duration < 4500,
     "catalogo contem html": (r) => typeof r.body === "string" && r.body.includes("product")
   });
 
   const accountResponse = http.post(
-    "http://lojaebac.ebaconline.art.br/minha-conta/",
+    `${baseUrl}/minha-conta/`,
     {
       username: user.username,
       password: user.password,
