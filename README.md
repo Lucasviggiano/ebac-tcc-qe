@@ -12,7 +12,6 @@ Projeto de Trabalho de Conclusao de Curso da trilha de Quality Engineering (EBAC
 - [Pre-requisitos](#pre-requisitos)
 - [Setup local](#setup-local)
 - [Execucao dos testes](#execucao-dos-testes)
-- [Avaliacao SQuaRE](#avaliacao-square)
 - [CI/CD no GitHub Actions](#cicd-no-github-actions)
 - [Evidencias e relatorios](#evidencias-e-relatorios)
 - [Rastreabilidade com os requisitos do PDF](#rastreabilidade-com-os-requisitos-do-pdf)
@@ -104,13 +103,6 @@ Documentacao:
 - workflow CI com jobs separados por camada;
 - publicacao de artefatos de execucao;
 - suporte a relatorios (Cypress, Allure, k6 summary, logs API).
-
-### 8 Governanca SQuaRE
-
-- modelo de qualidade alinhado a ISO/IEC 25010;
-- catalogo de metricas alinhado a ISO/IEC 25023;
-- metodo de avaliacao e gate alinhados a ISO/IEC 25040;
-- scorecard automatizado com decisao GO/NO-GO por caracteristica.
 
 ## Arquitetura do repositorio
 
@@ -221,8 +213,6 @@ npm run test:mobile:catalog
 npm run test:performance:login
 npm run test:performance:catalog
 npm run test:performance
-npm run square:evaluate
-npm run square:gate
 npm run test:all
 ```
 
@@ -262,27 +252,6 @@ py -3 -m streamlit run tools/python-test-runner/app.py
 
 Referencia: `tools/python-test-runner/README.md`
 
-## Avaliacao SQuaRE
-
-Artefatos formais:
-
-- `docs/square-quality-requirements.md`
-- `docs/square-metrics-catalog.md`
-- `docs/square-evaluation-method.md`
-- `docs/square-traceability.md`
-
-Comandos:
-
-```bash
-npm run square:evaluate
-npm run square:gate
-```
-
-Saidas:
-
-- `reports/square/scorecard-YYYY-MM-DD.json`
-- `reports/square/scorecard-YYYY-MM-DD.md`
-
 ## CI/CD no GitHub Actions
 
 Workflow principal:
@@ -301,7 +270,6 @@ Jobs:
 - UI Tests - Cypress;
 - Performance Tests - k6;
 - Mobile Android Smoke - Appium/WDIO (manual via `workflow_dispatch` quando `run_mobile=true`).
-- SQuaRE Gate - consolidacao de scorecard e decisao GO/NO-GO.
 
 Artefatos publicados:
 
@@ -309,7 +277,6 @@ Artefatos publicados:
 - `ui-evidence` (screenshots/videos/downloads);
 - `performance-evidence` (summaries k6 + logs);
 - `mobile-evidence` (logs Appium/WDIO + Allure).
-- `square-evidence` (scorecard JSON/MD).
 
 ## Evidencias e relatorios
 
@@ -320,7 +287,6 @@ Locais relevantes de saida:
 - Mobile: `reports/ci/mobile`, `automation/Mobile/reports/allure-results` e `automation/Mobile/reports/allure-report`;
 - k6: `performance/k6/reports/*.json`;
 - logs de pipeline: `reports/ci/<camada>/`;
-- scorecards SQuaRE: `reports/square/*`;
 - runner Python: `reports/runner/<timestamp>/`.
 
 ## Rastreabilidade com os requisitos do PDF

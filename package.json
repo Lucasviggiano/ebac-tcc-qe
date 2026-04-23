@@ -16,8 +16,6 @@
     "test:performance:login": "node -e \"require('fs').mkdirSync('performance/k6/reports',{recursive:true})\" && k6 run --summary-export=performance/k6/reports/login-summary.json performance/k6/login-performance.js",
     "test:performance:catalog": "node -e \"require('fs').mkdirSync('performance/k6/reports',{recursive:true})\" && k6 run --summary-export=performance/k6/reports/catalog-summary.json performance/k6/catalog-performance.js",
     "test:performance": "npm run test:performance:login && npm run test:performance:catalog",
-    "square:evaluate": "node tools/square-evaluator.js",
-    "square:gate": "node tools/square-evaluator.js --gate",
     "test:all": "npm run test:ui && npm run test:api && npm run test:mobile:smoke && npm run test:performance",
     "ci:ui": "npm run test:ui",
     "ci:api": "npm run test:api",

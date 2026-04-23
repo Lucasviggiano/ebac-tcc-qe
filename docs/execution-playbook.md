@@ -10,7 +10,6 @@ Padronizar a rotina de execucao de testes nas 4 camadas do projeto:
 - API
 - Mobile
 - Performance
-- SQuaRE (scorecard e gate)
 
 ## 2. Pre-check de ambiente
 
@@ -115,19 +114,6 @@ npm --prefix automation/Mobile run allure:open
 3. Performance executa os 2 cenarios com configuracao oficial.
 4. Mobile executa quando fizer parte do escopo da entrega.
 5. Evidencias e resumo atualizados em `reports/`.
-6. Scorecard SQuaRE gerado com decisao GO/NO-GO.
-
-## 6.1 Avaliacao SQuaRE
-
-```bash
-npm run square:evaluate
-npm run square:gate
-```
-
-Saidas:
-
-- `reports/square/scorecard-YYYY-MM-DD.json`
-- `reports/square/scorecard-YYYY-MM-DD.md`
 
 ## 7. CI/CD
 
@@ -141,7 +127,6 @@ Jobs:
 - UI
 - Performance
 - Mobile smoke (manual via `workflow_dispatch` com `run_mobile=true`)
-- SQuaRE gate
 
 Inputs manuais recomendados para rodada completa de banca:
 

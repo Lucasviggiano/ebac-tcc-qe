@@ -15,7 +15,6 @@ reports/
 |-- ui/
 |-- mobile/
 |-- performance/
-|-- square/
 |-- evidence/
 |-- html/
 |-- json/
@@ -29,7 +28,6 @@ Use sempre data no formato `YYYY-MM-DD`.
 - consolidado: `summary-YYYY-MM-DD.md`
 - por camada: `<camada>-report-YYYY-MM-DD.md`
 - inventario de evidencias: `evidence-index-YYYY-MM-DD.md`
-- scorecard SQuaRE: `square/scorecard-YYYY-MM-DD.{json,md}`
 
 ## Conteudo minimo por report
 
@@ -53,7 +51,6 @@ Use sempre data no formato `YYYY-MM-DD`.
 - API: logs e cobertura
 - Mobile: Allure report/results
 - Performance: summaries JSON do k6
-- SQuaRE: scorecard consolidado de qualidade
 
 ## Referencias
 

@@ -1,11 +1,19 @@
 import { loginActions } from "../support/actions/login.actions";
+import { registerPage } from "../support/pages/register.page";
 
 describe("US003 - Detalhes da conta", () => {
-  let users;
+  let runtimeUser;
 
   before(() => {
     cy.fixture("users").then((data) => {
-      users = data;
+      runtimeUser = {
+        username: `qa.account.${Date.now()}@ebac.com`,
+        password: data.registerUser.password
+      };
+
+      registerPage.visit();
+      registerPage.register(runtimeUser.username, runtimeUser.password);
+      registerPage.successContent().should("be.visible");
     });
   });
 
@@ -15,13 +23,13 @@ describe("US003 - Detalhes da conta", () => {
     const lastName = "QA";
     const displayName = `lucas.qa.${timestamp}`;
 
-    loginActions.loginWithCredentials(users.validUser.username, users.validUser.password);
+    loginActions.loginWithCredentials(runtimeUser.username, runtimeUser.password);
 
     cy.visit("/minha-conta/edit-account/");
     cy.get("#account_first_name").should("be.visible").clear().type(firstName);
     cy.get("#account_last_name").should("be.visible").clear().type(lastName);
     cy.get("#account_display_name").should("be.visible").clear().type(displayName);
-    cy.get(".woocommerce-Button").click();
+    cy.get('button[name="save_account_details"], .woocommerce-Button').first().click();
 
     cy.get(".woocommerce-message").should("contain.text", "Detalhes da conta modificados com sucesso");
   });

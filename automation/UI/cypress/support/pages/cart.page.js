@@ -8,7 +8,13 @@ class CartPage {
   }
 
   notices() {
-    return cy.get(".woocommerce-message, .woocommerce-error, .woocommerce-info");
+    const selector = ".woocommerce-message, .woocommerce-error, .woocommerce-info, .woocommerce-notice";
+
+    return cy
+      .get("body", { timeout: 10000 })
+      .find(selector)
+      .should("have.length.greaterThan", 0)
+      .first();
   }
 
   couponInput() {
@@ -20,7 +26,12 @@ class CartPage {
   }
 
   applyCoupon() {
-    cy.contains("button", "Aplicar cupom").click({ force: true });
+    cy.get(
+      'input[name="apply_coupon"], button[name="apply_coupon"], input[value="Apply coupon"], button[value="Apply coupon"], .coupon .button'
+    )
+      .filter(":visible")
+      .first()
+      .click({ force: true });
   }
 
   totalAmount() {

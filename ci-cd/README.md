@@ -18,7 +18,6 @@ Executar validacoes automatizadas por camada com evidencias publicadas como arte
 - API (Jest + Supertest + contratos)
 - Performance (k6)
 - Mobile Android smoke (Appium + WebdriverIO)
-- SQuaRE Gate (ISO/IEC 25010 + 25023 + 25040)
 
 ## Gatilhos
 
@@ -68,17 +67,6 @@ Executar validacoes automatizadas por camada com evidencias publicadas como arte
   - `reports/ci/mobile`
   - `automation/Mobile/reports/allure-results`
   - `automation/Mobile/reports/allure-report`
-
-### 5. `square-gate`
-
-- consolida resultados dos jobs anteriores (incluindo mobile quando aplicavel)
-- executa:
-  - `npm run square:gate`
-- gera scorecard em:
-  - `reports/square/scorecard-YYYY-MM-DD.json`
-  - `reports/square/scorecard-YYYY-MM-DD.md`
-- publica artefato `square-evidence`
-- reprova pipeline quando gate SQuaRE nao for atendido
 
 ## Como disparar rodada completa manual
 

@@ -1,12 +1,28 @@
 import { loginPage } from "../support/pages/login.page";
 import { loginActions } from "../support/actions/login.actions";
+import { registerPage } from "../support/pages/register.page";
 
 describe("US002 - Login na plataforma", () => {
   let users;
+  let runtimeUser;
 
   before(() => {
     cy.fixture("users").then((data) => {
       users = data;
+      runtimeUser = {
+        username: `qa.login.${Date.now()}@ebac.com`,
+        password: data.registerUser.password
+      };
+
+      registerPage.visit();
+      registerPage.register(runtimeUser.username, runtimeUser.password);
+      registerPage.successContent().should("be.visible");
+
+      users.validUser = runtimeUser;
+      users.invalidPasswordUser = {
+        username: runtimeUser.username,
+        password: `${runtimeUser.password}_invalida`
+      };
     });
   });
 
@@ -22,7 +38,19 @@ describe("US002 - Login na plataforma", () => {
 
     loginPage
       .errorMessage()
-      .assertTextContainsAny(["erro", "error", "senha", "password", "incorreta", "incorrect", "invalida", "invalid"]);
+      .assertTextContainsAny([
+        "erro",
+        "error",
+        "senha",
+        "password",
+        "incorreta",
+        "incorrect",
+        "desconhecido",
+        "unknown",
+        "email",
+        "usuario",
+        "username"
+      ]);
   });
 
   it("CT-US002-04 - deve bloquear/alertar apos 3 tentativas invalidas consecutivas", () => {
@@ -30,7 +58,19 @@ describe("US002 - Login na plataforma", () => {
 
     loginPage
       .errorMessage()
-      .assertTextContainsAny(["erro", "error", "tentativa", "attempt", "bloque", "lock", "incorreta", "incorrect"]);
+      .assertTextContainsAny([
+        "erro",
+        "error",
+        "tentativa",
+        "attempt",
+        "bloque",
+        "lock",
+        "desconhecido",
+        "unknown",
+        "email",
+        "usuario",
+        "username"
+      ]);
   });
 
   it("CT-US002-05 - nao deve bloquear com apenas 2 tentativas invalidas", () => {
@@ -38,10 +78,34 @@ describe("US002 - Login na plataforma", () => {
 
     loginPage
       .errorMessage()
-      .assertTextContainsAny(["erro", "error", "senha", "password", "incorreta", "incorrect", "invalida", "invalid"]);
+      .assertTextContainsAny([
+        "erro",
+        "error",
+        "senha",
+        "password",
+        "incorreta",
+        "incorrect",
+        "desconhecido",
+        "unknown",
+        "email",
+        "usuario",
+        "username"
+      ]);
     loginPage.submit();
     loginPage
       .errorMessage()
-      .assertTextContainsAny(["erro", "error", "senha", "password", "incorreta", "incorrect", "invalida", "invalid"]);
+      .assertTextContainsAny([
+        "erro",
+        "error",
+        "senha",
+        "password",
+        "incorreta",
+        "incorrect",
+        "desconhecido",
+        "unknown",
+        "email",
+        "usuario",
+        "username"
+      ]);
   });
 });

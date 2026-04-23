@@ -65,7 +65,6 @@ No workflow oficial `.github/workflows/qa-pipeline.yml`:
 
 - job `performance-tests`
 - upload do artefato `performance-evidence` (summaries + logs)
-- consumo dos summaries pelo job `square-gate` para calculo de score SQuaRE
 
 ## Referencias
 

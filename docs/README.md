@@ -18,14 +18,6 @@ Indice da documentacao tecnica de QA do projeto.
   - rastreabilidade oficial dos requisitos 4.1 a 4.7 do PDF
 - `execution-playbook.md`
   - runbook operacional de execucao local e CI
-- `square-quality-requirements.md`
-  - requisitos formais SQuaRE (ISO/IEC 25010)
-- `square-metrics-catalog.md`
-  - metricas objetivas e formulas (ISO/IEC 25023)
-- `square-evaluation-method.md`
-  - metodo de avaliacao e criterios de gate (ISO/IEC 25040)
-- `square-traceability.md`
-  - rastreabilidade `SQR -> AC/TC -> automacao -> evidencia`
 
 ## Relacao com o restante do repositorio
 
