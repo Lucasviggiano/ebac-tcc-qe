@@ -12,6 +12,7 @@ Projeto de Trabalho de Conclusao de Curso da trilha de Quality Engineering (EBAC
 - [Pre-requisitos](#pre-requisitos)
 - [Setup local](#setup-local)
 - [Execucao dos testes](#execucao-dos-testes)
+- [Documentacao de Execucao de Testes](#documentacao-de-execucao-de-testes)
 - [CI/CD no GitHub Actions](#cicd-no-github-actions)
 - [Evidencias e relatorios](#evidencias-e-relatorios)
 - [Rastreabilidade com os requisitos do PDF](#rastreabilidade-com-os-requisitos-do-pdf)
@@ -252,6 +253,15 @@ py -3 -m streamlit run tools/python-test-runner/app.py
 
 Referencia: `tools/python-test-runner/README.md`
 
+## Documentacao de Execucao de Testes
+
+Para instrucoes operacionais completas e atualizadas (setup, comandos por camada, CI e troubleshooting), consulte:
+
+- `documentation/README.md`
+- `documentation/how-to-run-all-tests.md`
+- `documentation/github-actions-test-runs.md`
+- `documentation/test-troubleshooting.md`
+
 ## CI/CD no GitHub Actions
 
 Workflow principal:
@@ -269,14 +279,17 @@ Jobs:
 - API Tests - Supertest;
 - UI Tests - Cypress;
 - Performance Tests - k6;
-- Mobile Android Smoke - Appium/WDIO (manual via `workflow_dispatch` quando `run_mobile=true`).
+
+Observacao:
+
+- Atualmente a pipeline principal nao executa o job mobile.
+- A execucao mobile permanece documentada para uso local.
 
 Artefatos publicados:
 
 - `api-evidence` (logs + coverage quando existir);
 - `ui-evidence` (screenshots/videos/downloads);
-- `performance-evidence` (summaries k6 + logs);
-- `mobile-evidence` (logs Appium/WDIO + Allure).
+- `performance-evidence` (summaries k6 + logs).
 
 ## Evidencias e relatorios
 

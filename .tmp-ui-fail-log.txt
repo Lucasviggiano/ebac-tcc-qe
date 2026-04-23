@@ -1,0 +1,466 @@
+﻿2026-04-23T22:41:01.7372314Z Current runner version: '2.333.1'
+2026-04-23T22:41:01.7402985Z ##[group]Runner Image Provisioner
+2026-04-23T22:41:01.7403821Z Hosted Compute Agent
+2026-04-23T22:41:01.7404353Z Version: 20260213.493
+2026-04-23T22:41:01.7405070Z Commit: 5c115507f6dd24b8de37d8bbe0bb4509d0cc0fa3
+2026-04-23T22:41:01.7406039Z Build Date: 2026-02-13T00:28:41Z
+2026-04-23T22:41:01.7406802Z Worker ID: {7d8379e8-66be-49d2-87aa-54af5ee42f28}
+2026-04-23T22:41:01.7407579Z Azure Region: centralus
+2026-04-23T22:41:01.7408103Z ##[endgroup]
+2026-04-23T22:41:01.7409560Z ##[group]Operating System
+2026-04-23T22:41:01.7410279Z Ubuntu
+2026-04-23T22:41:01.7410758Z 24.04.4
+2026-04-23T22:41:01.7411197Z LTS
+2026-04-23T22:41:01.7411720Z ##[endgroup]
+2026-04-23T22:41:01.7412212Z ##[group]Runner Image
+2026-04-23T22:41:01.7412805Z Image: ubuntu-24.04
+2026-04-23T22:41:01.7413390Z Version: 20260413.86.1
+2026-04-23T22:41:01.7414618Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260413.86/images/ubuntu/Ubuntu2404-Readme.md
+2026-04-23T22:41:01.7416390Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260413.86
+2026-04-23T22:41:01.7417322Z ##[endgroup]
+2026-04-23T22:41:01.7418423Z ##[group]GITHUB_TOKEN Permissions
+2026-04-23T22:41:01.7420526Z Contents: read
+2026-04-23T22:41:01.7421055Z Metadata: read
+2026-04-23T22:41:01.7421657Z ##[endgroup]
+2026-04-23T22:41:01.7423606Z Secret source: Actions
+2026-04-23T22:41:01.7424699Z Prepare workflow directory
+2026-04-23T22:41:01.8026865Z Prepare all required actions
+2026-04-23T22:41:01.8082869Z Getting action download info
+2026-04-23T22:41:02.1856073Z Download action repository 'actions/checkout@v4' (SHA:34e114876b0b11c390a56381ad16ebd13914f8d5)
+2026-04-23T22:41:02.3002725Z Download action repository 'cypress-io/github-action@v6' (SHA:f790eee7a50d9505912f50c2095510be7de06aa7)
+2026-04-23T22:41:02.8939002Z Download action repository 'actions/upload-artifact@v4' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+2026-04-23T22:41:03.1249928Z Complete job name: UI Tests - Cypress
+2026-04-23T22:41:03.2001792Z ##[group]Run actions/checkout@v4
+2026-04-23T22:41:03.2003063Z with:
+2026-04-23T22:41:03.2003846Z   repository: Lucasviggiano/ebac-tcc-qe
+2026-04-23T22:41:03.2005096Z   token: ***
+2026-04-23T22:41:03.2006051Z   ssh-strict: true
+2026-04-23T22:41:03.2006838Z   ssh-user: git
+2026-04-23T22:41:03.2007616Z   persist-credentials: true
+2026-04-23T22:41:03.2008481Z   clean: true
+2026-04-23T22:41:03.2009266Z   sparse-checkout-cone-mode: true
+2026-04-23T22:41:03.2010214Z   fetch-depth: 1
+2026-04-23T22:41:03.2010970Z   fetch-tags: false
+2026-04-23T22:41:03.2011753Z   show-progress: true
+2026-04-23T22:41:03.2012528Z   lfs: false
+2026-04-23T22:41:03.2013254Z   submodules: false
+2026-04-23T22:41:03.2014054Z   set-safe-directory: true
+2026-04-23T22:41:03.2015184Z env:
+2026-04-23T22:41:03.2016171Z   BASE_URL: http://lojaebac.ebaconline.art.br
+2026-04-23T22:41:03.2017308Z   COUPONS_PATH: /wp-json/wc/v3/coupons
+2026-04-23T22:41:03.2018305Z   API_BASIC_USER: admin_ebac
+2026-04-23T22:41:03.2019278Z   API_BASIC_PASS: @admin!&b@c!2022
+2026-04-23T22:41:03.2020201Z ##[endgroup]
+2026-04-23T22:41:03.3103808Z Syncing repository: Lucasviggiano/ebac-tcc-qe
+2026-04-23T22:41:03.3106755Z ##[group]Getting Git version info
+2026-04-23T22:41:03.3108093Z Working directory is '/home/runner/work/ebac-tcc-qe/ebac-tcc-qe'
+2026-04-23T22:41:03.3109970Z [command]/usr/bin/git version
+2026-04-23T22:41:03.3133759Z git version 2.53.0
+2026-04-23T22:41:03.3160008Z ##[endgroup]
+2026-04-23T22:41:03.3173608Z Temporarily overriding HOME='/home/runner/work/_temp/0cb2d754-64a2-41d5-8647-c13eeb0f01fc' before making global git config changes
+2026-04-23T22:41:03.3176397Z Adding repository directory to the temporary git global config as a safe directory
+2026-04-23T22:41:03.3186378Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/ebac-tcc-qe/ebac-tcc-qe
+2026-04-23T22:41:03.3216137Z Deleting the contents of '/home/runner/work/ebac-tcc-qe/ebac-tcc-qe'
+2026-04-23T22:41:03.3219706Z ##[group]Initializing the repository
+2026-04-23T22:41:03.3223589Z [command]/usr/bin/git init /home/runner/work/ebac-tcc-qe/ebac-tcc-qe
+2026-04-23T22:41:03.3329122Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-04-23T22:41:03.3332127Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-04-23T22:41:03.3334963Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-04-23T22:41:03.3337175Z hint: call:
+2026-04-23T22:41:03.3337889Z hint:
+2026-04-23T22:41:03.3338888Z hint: 	git config --global init.defaultBranch <name>
+2026-04-23T22:41:03.3340088Z hint:
+2026-04-23T22:41:03.3341589Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-04-23T22:41:03.3343355Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-04-23T22:41:03.3344729Z hint:
+2026-04-23T22:41:03.3345564Z hint: 	git branch -m <name>
+2026-04-23T22:41:03.3346899Z hint:
+2026-04-23T22:41:03.3348071Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-04-23T22:41:03.3350016Z Initialized empty Git repository in /home/runner/work/ebac-tcc-qe/ebac-tcc-qe/.git/
+2026-04-23T22:41:03.3353084Z [command]/usr/bin/git remote add origin https://github.com/Lucasviggiano/ebac-tcc-qe
+2026-04-23T22:41:03.3373154Z ##[endgroup]
+2026-04-23T22:41:03.3375198Z ##[group]Disabling automatic garbage collection
+2026-04-23T22:41:03.3377315Z [command]/usr/bin/git config --local gc.auto 0
+2026-04-23T22:41:03.3405889Z ##[endgroup]
+2026-04-23T22:41:03.3407588Z ##[group]Setting up auth
+2026-04-23T22:41:03.3411813Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-04-23T22:41:03.3440683Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-04-23T22:41:03.3729799Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-04-23T22:41:03.3760276Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-04-23T22:41:03.3968954Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-04-23T22:41:03.3998253Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-04-23T22:41:03.4211157Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-04-23T22:41:03.4242475Z ##[endgroup]
+2026-04-23T22:41:03.4243785Z ##[group]Fetching the repository
+2026-04-23T22:41:03.4252242Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +eaa27b89f147f341e69b0b6f712588895d2b704f:refs/remotes/origin/main
+2026-04-23T22:41:04.2853102Z From https://github.com/Lucasviggiano/ebac-tcc-qe
+2026-04-23T22:41:04.2856322Z  * [new ref]         eaa27b89f147f341e69b0b6f712588895d2b704f -> origin/main
+2026-04-23T22:41:04.2882775Z ##[endgroup]
+2026-04-23T22:41:04.2884284Z ##[group]Determining the checkout info
+2026-04-23T22:41:04.2886012Z ##[endgroup]
+2026-04-23T22:41:04.2890447Z [command]/usr/bin/git sparse-checkout disable
+2026-04-23T22:41:04.2925446Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-04-23T22:41:04.2950168Z ##[group]Checking out the ref
+2026-04-23T22:41:04.2953937Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2026-04-23T22:41:04.3565143Z Switched to a new branch 'main'
+2026-04-23T22:41:04.3567542Z branch 'main' set up to track 'origin/main'.
+2026-04-23T22:41:04.3579660Z ##[endgroup]
+2026-04-23T22:41:04.3616383Z [command]/usr/bin/git log -1 --format=%H
+2026-04-23T22:41:04.3638400Z eaa27b89f147f341e69b0b6f712588895d2b704f
+2026-04-23T22:41:04.3954538Z ##[group]Run cypress-io/github-action@v6
+2026-04-23T22:41:04.3955954Z with:
+2026-04-23T22:41:04.3956662Z   working-directory: automation/UI
+2026-04-23T22:41:04.3957573Z   browser: chrome
+2026-04-23T22:41:04.3958321Z   command: npm run test:ui
+2026-04-23T22:41:04.3959153Z   component: false
+2026-04-23T22:41:04.3959866Z   record: false
+2026-04-23T22:41:04.3960612Z   publish-summary: true
+2026-04-23T22:41:04.3961373Z env:
+2026-04-23T22:41:04.3962148Z   BASE_URL: http://lojaebac.ebaconline.art.br
+2026-04-23T22:41:04.3963214Z   COUPONS_PATH: /wp-json/wc/v3/coupons
+2026-04-23T22:41:04.3964193Z   API_BASIC_USER: admin_ebac
+2026-04-23T22:41:04.3965071Z   API_BASIC_PASS: @admin!&b@c!2022
+2026-04-23T22:41:04.3966147Z ##[endgroup]
+2026-04-23T22:41:04.7760392Z Cache hit for: npm-linux-x64-3c7edeba98e7056a59f07cb207e493c302e5d053e9451ff1cf5eecb7150d4c4cd9b6621b8144ad43e5ae8e22b7fa5dc32738ad17a91dc499104411c865d5ac28
+2026-04-23T22:41:04.8006914Z Cache hit for: cypress-linux-x64-3c7edeba98e7056a59f07cb207e493c302e5d053e9451ff1cf5eecb7150d4c4cd9b6621b8144ad43e5ae8e22b7fa5dc32738ad17a91dc499104411c865d5ac28
+2026-04-23T22:41:05.5712402Z Received 5957749 of 5957749 (100.0%), 8.9 MBs/sec
+2026-04-23T22:41:05.5713402Z Cache Size: ~6 MB (5957749 B)
+2026-04-23T22:41:05.5766510Z [command]/usr/bin/tar -xf /home/runner/work/_temp/2fc60ea8-1942-4c2b-be24-869f1a494dca/cache.tzst -P -C /home/runner/work/ebac-tcc-qe/ebac-tcc-qe --use-compress-program unzstd
+2026-04-23T22:41:05.6482123Z Cache restored successfully
+2026-04-23T22:41:05.9428355Z Received 62914560 of 176661072 (35.6%), 59.9 MBs/sec
+2026-04-23T22:41:06.6601446Z Received 176661072 of 176661072 (100.0%), 98.1 MBs/sec
+2026-04-23T22:41:06.6603853Z Cache Size: ~168 MB (176661072 B)
+2026-04-23T22:41:06.6644778Z [command]/usr/bin/tar -xf /home/runner/work/_temp/c840f475-2a2e-4fb1-b5a5-445feb3d775a/cache.tzst -P -C /home/runner/work/ebac-tcc-qe/ebac-tcc-qe --use-compress-program unzstd
+2026-04-23T22:41:08.5939427Z Cache restored successfully
+2026-04-23T22:41:08.6037768Z [command]/usr/local/bin/npm ci
+2026-04-23T22:41:11.5687706Z 
+2026-04-23T22:41:11.5688758Z added 175 packages, and audited 176 packages in 2s
+2026-04-23T22:41:11.5689648Z 
+2026-04-23T22:41:11.5690160Z 40 packages are looking for funding
+2026-04-23T22:41:11.5690984Z   run `npm fund` for details
+2026-04-23T22:41:11.5727365Z 
+2026-04-23T22:41:11.5739172Z 4 vulnerabilities (3 moderate, 1 high)
+2026-04-23T22:41:11.5739634Z 
+2026-04-23T22:41:11.5739896Z To address issues that do not require attention, run:
+2026-04-23T22:41:11.5740441Z   npm audit fix
+2026-04-23T22:41:11.5740660Z 
+2026-04-23T22:41:11.5740941Z To address all issues (including breaking changes), run:
+2026-04-23T22:41:11.5741558Z   npm audit fix --force
+2026-04-23T22:41:11.5741814Z 
+2026-04-23T22:41:11.5742007Z Run `npm audit` for details.
+2026-04-23T22:41:11.5919548Z [command]/usr/local/bin/npx cypress cache list
+2026-04-23T22:41:12.0633443Z ┌─────────┬───────────────────┐
+2026-04-23T22:41:12.0634074Z │ version │ last used         │
+2026-04-23T22:41:12.0634644Z ├─────────┼───────────────────┤
+2026-04-23T22:41:12.0635199Z │ 13.17.0 │ a few seconds ago │
+2026-04-23T22:41:12.0635605Z └─────────┴───────────────────┘
+2026-04-23T22:41:12.0807486Z Using custom test command: npm run test:ui
+2026-04-23T22:41:12.0837406Z ##[warning]command parameter is used and the following other parameters are ignored: browser.
+2026-04-23T22:41:12.0847297Z run tests command "npm run test:ui"
+2026-04-23T22:41:12.0848024Z current working directory "/home/runner/work/ebac-tcc-qe/ebac-tcc-qe/automation/UI"
+2026-04-23T22:41:12.0848737Z [command]/usr/local/bin/npm run test:ui
+2026-04-23T22:41:12.1946966Z 
+2026-04-23T22:41:12.1947509Z > tcc-ebac-qe-ui@1.0.0 test:ui
+2026-04-23T22:41:12.1948006Z > cypress run
+2026-04-23T22:41:12.1948173Z 
+2026-04-23T22:41:15.2726761Z 
+2026-04-23T22:41:15.2727642Z DevTools listening on ws://127.0.0.1:43299/devtools/browser/c958af5e-489e-49c4-b2eb-27c9ae287c1d
+2026-04-23T22:41:22.3673827Z 
+2026-04-23T22:41:22.4038805Z [90m====================================================================================================[39m
+2026-04-23T22:41:22.4039611Z 
+2026-04-23T22:41:22.4043563Z [0m  ([4m[1mRun Starting[22m[24m)[0m
+2026-04-23T22:41:22.4043927Z 
+2026-04-23T22:41:22.4132408Z [90m  ┌[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m┐[39m
+2026-04-23T22:41:22.4136244Z [90m  │[39m [90mCypress:[39m        13.17.0                                                                        [90m│[39m
+2026-04-23T22:41:22.4137016Z [90m  │[39m [90mBrowser:[39m        Electron 118 [90m(headless)[39m                                                        [90m│[39m
+2026-04-23T22:41:22.4138058Z [90m  │[39m [90mNode Version:[39m   [0mv20.20.2 [90m(/usr/local/bin/node)[39m[0m                                                 [90m│[39m
+2026-04-23T22:41:22.4139723Z [90m  │[39m [90mSpecs:[39m          [0m5 found (add-to-cart.cy.js, detalhes-conta.cy.js, e2e-purchase-flow.cy.js, log[0m [90m│[39m
+2026-04-23T22:41:22.4141183Z [90m  │[39m                 [0min.cy.js, register.cy.js)[0m                                                      [90m│[39m
+2026-04-23T22:41:22.4142503Z [90m  │[39m [90mSearched:[39m       [0mcypress/e2e/**/*.cy.js[0m                                                         [90m│[39m
+2026-04-23T22:41:22.4148280Z [90m  └[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m┘[39m
+2026-04-23T22:41:22.4153322Z 
+2026-04-23T22:41:22.4153363Z 
+2026-04-23T22:41:22.4158163Z [90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m
+2026-04-23T22:41:22.4161212Z                                                                                                     
+2026-04-23T22:41:22.4161811Z   Running:  [90madd-to-cart.cy.js[39m                                                               [90m(1 of 5)[39m
+2026-04-23T22:41:24.9858060Z 
+2026-04-23T22:41:24.9859022Z [0m[0m
+2026-04-23T22:41:24.9876912Z [0m  US001 - Adicionar item ao carrinho[0m
+2026-04-23T22:41:50.7971490Z   [32m  ✓[0m[90m CT-US001-01 - deve adicionar produto com quantidade valida[0m[33m (25785ms)[0m
+2026-04-23T22:42:11.2298064Z   [32m  ✓[0m[90m CT-US001-02 - deve impedir quantidade acima do limite[0m[33m (20309ms)[0m
+2026-04-23T22:42:36.6273570Z   [32m  ✓[0m[90m CT-US001-03 - deve tentar aplicar cupom na faixa de 10 por cento[0m[33m (25294ms)[0m
+2026-04-23T22:43:05.6514851Z     [33m(Attempt 1 of 3)[0m CT-US001-05 - deve sinalizar restricao de compra quando total excede limite
+2026-04-23T22:43:15.0541929Z   [32m  ✓[0m[90m CT-US001-05 - deve sinalizar restricao de compra quando total excede limite[0m[90m (9223ms)[0m
+2026-04-23T22:43:15.0542972Z 
+2026-04-23T22:43:15.0779627Z 
+2026-04-23T22:43:15.0781789Z [92m [0m[32m 4 passing[0m[90m (2m)[0m
+2026-04-23T22:43:15.0783269Z 
+2026-04-23T22:43:16.1071673Z 
+2026-04-23T22:43:16.1072883Z [32m  ([4m[1mResults[22m[24m)[39m
+2026-04-23T22:43:16.1092700Z 
+2026-04-23T22:43:16.1108993Z [90m  ┌[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m┐[39m
+2026-04-23T22:43:16.1114633Z [90m  │[39m [90mTests:[39m        [32m4[39m                                                                                [90m│[39m
+2026-04-23T22:43:16.1116243Z [90m  │[39m [90mPassing:[39m      [32m4[39m                                                                                [90m│[39m
+2026-04-23T22:43:16.1117478Z [90m  │[39m [90mFailing:[39m      [32m0[39m                                                                                [90m│[39m
+2026-04-23T22:43:16.1118689Z [90m  │[39m [90mPending:[39m      [32m0[39m                                                                                [90m│[39m
+2026-04-23T22:43:16.1119893Z [90m  │[39m [90mSkipped:[39m      [32m0[39m                                                                                [90m│[39m
+2026-04-23T22:43:16.1121068Z [90m  │[39m [90mScreenshots:[39m  [32m1[39m                                                                                [90m│[39m
+2026-04-23T22:43:16.1122719Z [90m  │[39m [90mVideo:[39m        [32mtrue[39m                                                                             [90m│[39m
+2026-04-23T22:43:16.1124433Z [90m  │[39m [90mDuration:[39m     [32m1 minute, 50 seconds[39m                                                             [90m│[39m
+2026-04-23T22:43:16.1126279Z [90m  │[39m [90mSpec Ran:[39m     [32m[32madd-to-cart.cy.js[32m[39m                                                                [90m│[39m
+2026-04-23T22:43:16.1132982Z [90m  └[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m┘[39m
+2026-04-23T22:43:16.1139532Z 
+2026-04-23T22:43:16.1139538Z 
+2026-04-23T22:43:16.1139930Z [33m  ([4m[1mScreenshots[22m[24m)[39m
+2026-04-23T22:43:16.1140286Z 
+2026-04-23T22:43:16.1141154Z [90m [39m -  [0m/home/runner/work/ebac-tcc-qe/ebac-tcc-qe/automation/UI/cypress/screenshots/add-[0m     [90m[90m(1280x720)[90m[39m
+2026-04-23T22:43:16.1142735Z [90m [39m    [0mto-cart.cy.js/US001 - Adicionar item ao carrinho -- CT-US001-05 - deve sinalizar[0m               
+2026-04-23T22:43:16.1144117Z [90m [39m    [0m restricao de compra quando total excede limite (failed).png[0m                                   
+2026-04-23T22:43:16.1144804Z 
+2026-04-23T22:43:16.1181803Z 
+2026-04-23T22:43:16.1183513Z [36m  ([4m[1mVideo[22m[24m)[39m
+2026-04-23T22:43:16.1184935Z 
+2026-04-23T22:43:16.1186277Z   -  Video output: [36m/home/runner/work/ebac-tcc-qe/ebac-tcc-qe/automation/UI/cypress/videos/add-to-cart.cy.js.mp4[39m
+2026-04-23T22:43:16.1187260Z 
+2026-04-23T22:43:16.1196322Z 
+2026-04-23T22:43:16.1210304Z [90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m
+2026-04-23T22:43:16.1214974Z                                                                                                     
+2026-04-23T22:43:16.1215961Z   Running:  [90mdetalhes-conta.cy.js[39m                                                            [90m(2 of 5)[39m
+2026-04-23T22:43:17.6856316Z 
+2026-04-23T22:43:17.6858422Z [0m[0m
+2026-04-23T22:43:17.6956244Z [0m  US003 - Detalhes da conta[0m
+2026-04-23T22:43:34.3031998Z   [31m  1) "before all" hook for "CT-US003-01 - deve atualizar detalhes da conta com sucesso"[0m
+2026-04-23T22:43:34.3106814Z 
+2026-04-23T22:43:34.3556597Z 
+2026-04-23T22:43:34.3587265Z [92m [0m[32m 0 passing[0m[90m (17s)[0m
+2026-04-23T22:43:34.3587931Z [31m  1 failing[0m
+2026-04-23T22:43:34.3588209Z 
+2026-04-23T22:43:34.3588873Z [0m  1) US003 - Detalhes da conta
+2026-04-23T22:43:34.3589548Z        "before all" hook for "CT-US003-01 - deve atualizar detalhes da conta com sucesso":
+2026-04-23T22:43:34.3591047Z [0m[31m     AssertionError: Timed out retrying after 10000ms: Expected to find element: `.woocommerce-MyAccount-content`, but never found it.
+2026-04-23T22:43:34.3591961Z 
+2026-04-23T22:43:34.3592694Z Because this error occurred during a `before all` hook we are skipping the remaining tests in the current suite: `US003 - Detalhes da conta`
+2026-04-23T22:43:34.3593579Z 
+2026-04-23T22:43:34.3594303Z Although you have test retries enabled, we do not retry tests when `before all` or `after all` hooks fail[0m[90m
+2026-04-23T22:43:34.3595508Z       at Context.eval (webpack://tcc-ebac-qe-ui/./cypress/e2e/detalhes-conta.cy.js:16:36)
+2026-04-23T22:43:34.3596657Z [0m
+2026-04-23T22:43:34.3596816Z 
+2026-04-23T22:43:34.3596822Z 
+2026-04-23T22:43:35.3820403Z 
+2026-04-23T22:43:35.3821050Z [31m  ([4m[1mResults[22m[24m)[39m
+2026-04-23T22:43:35.3824918Z 
+2026-04-23T22:43:35.3841801Z [90m  ┌[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m┐[39m
+2026-04-23T22:43:35.3848159Z [90m  │[39m [90mTests:[39m        [31m1[39m                                                                                [90m│[39m
+2026-04-23T22:43:35.3849488Z [90m  │[39m [90mPassing:[39m      [31m0[39m                                                                                [90m│[39m
+2026-04-23T22:43:35.3850825Z [90m  │[39m [90mFailing:[39m      [31m1[39m                                                                                [90m│[39m
+2026-04-23T22:43:35.3852544Z [90m  │[39m [90mPending:[39m      [31m0[39m                                                                                [90m│[39m
+2026-04-23T22:43:35.3854097Z [90m  │[39m [90mSkipped:[39m      [31m0[39m                                                                                [90m│[39m
+2026-04-23T22:43:35.3855371Z [90m  │[39m [90mScreenshots:[39m  [31m1[39m                                                                                [90m│[39m
+2026-04-23T22:43:35.3857234Z [90m  │[39m [90mVideo:[39m        [31mtrue[39m                                                                             [90m│[39m
+2026-04-23T22:43:35.3858515Z [90m  │[39m [90mDuration:[39m     [31m16 seconds[39m                                                                       [90m│[39m
+2026-04-23T22:43:35.3859962Z [90m  │[39m [90mSpec Ran:[39m     [31m[31mdetalhes-conta.cy.js[31m[39m                                                             [90m│[39m
+2026-04-23T22:43:35.3869256Z [90m  └[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m┘[39m
+2026-04-23T22:43:35.3874563Z 
+2026-04-23T22:43:35.3874571Z 
+2026-04-23T22:43:35.3874879Z [33m  ([4m[1mScreenshots[22m[24m)[39m
+2026-04-23T22:43:35.3875138Z 
+2026-04-23T22:43:35.3875669Z [90m [39m -  [0m/home/runner/work/ebac-tcc-qe/ebac-tcc-qe/automation/UI/cypress/screenshots/deta[0m     [90m[90m(1280x720)[90m[39m
+2026-04-23T22:43:35.3878570Z [90m [39m    [0mlhes-conta.cy.js/US003 - Detalhes da conta -- CT-US003-01 - deve atualizar detal[0m               
+2026-04-23T22:43:35.3879854Z [90m [39m    [0mhes da conta com sucesso -- before all hook (failed).png[0m                                       
+2026-04-23T22:43:35.3880272Z 
+2026-04-23T22:43:35.3917084Z 
+2026-04-23T22:43:35.3918011Z [36m  ([4m[1mVideo[22m[24m)[39m
+2026-04-23T22:43:35.3918949Z 
+2026-04-23T22:43:35.3919981Z   -  Video output: [36m/home/runner/work/ebac-tcc-qe/ebac-tcc-qe/automation/UI/cypress/videos/detalhes-conta.cy.js.mp4[39m
+2026-04-23T22:43:35.3920741Z 
+2026-04-23T22:43:35.3920897Z 
+2026-04-23T22:43:35.3927854Z [90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m
+2026-04-23T22:43:35.3932228Z                                                                                                     
+2026-04-23T22:43:35.3932972Z   Running:  [90me2e-purchase-flow.cy.js[39m                                                         [90m(3 of 5)[39m
+2026-04-23T22:43:36.9679685Z 
+2026-04-23T22:43:36.9680897Z [0m[0m
+2026-04-23T22:43:36.9774067Z [0m  E2E - Fluxo de compra[0m
+2026-04-23T22:44:09.2611236Z     [33m(Attempt 1 of 3)[0m deve autenticar, adicionar item e avancar para checkout
+2026-04-23T22:44:58.3166533Z   [32m  ✓[0m[90m deve autenticar, adicionar item e avancar para checkout[0m[33m (48923ms)[0m
+2026-04-23T22:44:58.3167669Z 
+2026-04-23T22:44:58.3402878Z 
+2026-04-23T22:44:58.3404048Z [92m [0m[32m 1 passing[0m[90m (1m)[0m
+2026-04-23T22:44:58.3404459Z 
+2026-04-23T22:44:59.3590834Z 
+2026-04-23T22:44:59.3592523Z [32m  ([4m[1mResults[22m[24m)[39m
+2026-04-23T22:44:59.3616087Z 
+2026-04-23T22:44:59.3630847Z [90m  ┌[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m┐[39m
+2026-04-23T22:44:59.3637349Z [90m  │[39m [90mTests:[39m        [32m1[39m                                                                                [90m│[39m
+2026-04-23T22:44:59.3640770Z [90m  │[39m [90mPassing:[39m      [32m1[39m                                                                                [90m│[39m
+2026-04-23T22:44:59.3643960Z [90m  │[39m [90mFailing:[39m      [32m0[39m                                                                                [90m│[39m
+2026-04-23T22:44:59.3645586Z [90m  │[39m [90mPending:[39m      [32m0[39m                                                                                [90m│[39m
+2026-04-23T22:44:59.3649139Z [90m  │[39m [90mSkipped:[39m      [32m0[39m                                                                                [90m│[39m
+2026-04-23T22:44:59.3653166Z [90m  │[39m [90mScreenshots:[39m  [32m1[39m                                                                                [90m│[39m
+2026-04-23T22:44:59.3656237Z [90m  │[39m [90mVideo:[39m        [32mtrue[39m                                                                             [90m│[39m
+2026-04-23T22:44:59.3658351Z [90m  │[39m [90mDuration:[39m     [32m1 minute, 21 seconds[39m                                                             [90m│[39m
+2026-04-23T22:44:59.3660270Z [90m  │[39m [90mSpec Ran:[39m     [32m[32me2e-purchase-flow.cy.js[32m[39m                                                          [90m│[39m
+2026-04-23T22:44:59.3667633Z [90m  └[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m┘[39m
+2026-04-23T22:44:59.3672823Z 
+2026-04-23T22:44:59.3672831Z 
+2026-04-23T22:44:59.3673654Z [33m  ([4m[1mScreenshots[22m[24m)[39m
+2026-04-23T22:44:59.3674035Z 
+2026-04-23T22:44:59.3675501Z [90m [39m -  [0m/home/runner/work/ebac-tcc-qe/ebac-tcc-qe/automation/UI/cypress/screenshots/e2e-[0m     [90m[90m(1280x720)[90m[39m
+2026-04-23T22:44:59.3677496Z [90m [39m    [0mpurchase-flow.cy.js/E2E - Fluxo de compra -- deve autenticar, adicionar item e a[0m               
+2026-04-23T22:44:59.3678771Z [90m [39m    [0mvancar para checkout (failed).png[0m                                                              
+2026-04-23T22:44:59.3679399Z 
+2026-04-23T22:44:59.3726261Z 
+2026-04-23T22:44:59.3737973Z [36m  ([4m[1mVideo[22m[24m)[39m
+2026-04-23T22:44:59.3738309Z 
+2026-04-23T22:44:59.3739080Z   -  Video output: [36m/home/runner/work/ebac-tcc-qe/ebac-tcc-qe/automation/UI/cypress/videos/e2e-purchase-flow.cy.js.mp4[39m
+2026-04-23T22:44:59.3739907Z 
+2026-04-23T22:44:59.3739913Z 
+2026-04-23T22:44:59.3746087Z [90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m
+2026-04-23T22:44:59.3752002Z                                                                                                     
+2026-04-23T22:44:59.3753521Z   Running:  [90mlogin.cy.js[39m                                                                     [90m(4 of 5)[39m
+2026-04-23T22:45:00.8720705Z 
+2026-04-23T22:45:00.8721711Z [0m[0m
+2026-04-23T22:45:00.8751564Z [0m  US002 - Login na plataforma[0m
+2026-04-23T22:45:24.9295104Z     [33m(Attempt 1 of 3)[0m CT-US002-01 - deve realizar login com credenciais validas
+2026-04-23T22:45:28.6739526Z   [32m  ✓[0m[90m CT-US002-01 - deve realizar login com credenciais validas[0m[90m (3664ms)[0m
+2026-04-23T22:45:31.5812885Z   [32m  ✓[0m[90m CT-US002-02 - deve exibir erro ao informar senha invalida[0m[90m (2874ms)[0m
+2026-04-23T22:45:40.1012705Z   [32m  ✓[0m[90m CT-US002-04 - deve bloquear/alertar apos 3 tentativas invalidas consecutivas[0m[90m (8451ms)[0m
+2026-04-23T22:45:46.6725586Z   [32m  ✓[0m[90m CT-US002-05 - nao deve bloquear com apenas 2 tentativas invalidas[0m[90m (6495ms)[0m
+2026-04-23T22:45:46.6726668Z 
+2026-04-23T22:45:46.6922335Z 
+2026-04-23T22:45:46.6923275Z [92m [0m[32m 4 passing[0m[90m (46s)[0m
+2026-04-23T22:45:46.6923652Z 
+2026-04-23T22:45:47.7104547Z 
+2026-04-23T22:45:47.7105453Z [32m  ([4m[1mResults[22m[24m)[39m
+2026-04-23T22:45:47.7109326Z 
+2026-04-23T22:45:47.7123889Z [90m  ┌[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m┐[39m
+2026-04-23T22:45:47.7130032Z [90m  │[39m [90mTests:[39m        [32m4[39m                                                                                [90m│[39m
+2026-04-23T22:45:47.7131269Z [90m  │[39m [90mPassing:[39m      [32m4[39m                                                                                [90m│[39m
+2026-04-23T22:45:47.7132543Z [90m  │[39m [90mFailing:[39m      [32m0[39m                                                                                [90m│[39m
+2026-04-23T22:45:47.7133843Z [90m  │[39m [90mPending:[39m      [32m0[39m                                                                                [90m│[39m
+2026-04-23T22:45:47.7135111Z [90m  │[39m [90mSkipped:[39m      [32m0[39m                                                                                [90m│[39m
+2026-04-23T22:45:47.7136840Z [90m  │[39m [90mScreenshots:[39m  [32m1[39m                                                                                [90m│[39m
+2026-04-23T22:45:47.7138139Z [90m  │[39m [90mVideo:[39m        [32mtrue[39m                                                                             [90m│[39m
+2026-04-23T22:45:47.7139470Z [90m  │[39m [90mDuration:[39m     [32m45 seconds[39m                                                                       [90m│[39m
+2026-04-23T22:45:47.7140797Z [90m  │[39m [90mSpec Ran:[39m     [32m[32mlogin.cy.js[32m[39m                                                                      [90m│[39m
+2026-04-23T22:45:47.7148728Z [90m  └[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m┘[39m
+2026-04-23T22:45:47.7154051Z 
+2026-04-23T22:45:47.7154057Z 
+2026-04-23T22:45:47.7154346Z [33m  ([4m[1mScreenshots[22m[24m)[39m
+2026-04-23T22:45:47.7154698Z 
+2026-04-23T22:45:47.7155571Z [90m [39m -  [0m/home/runner/work/ebac-tcc-qe/ebac-tcc-qe/automation/UI/cypress/screenshots/logi[0m     [90m[90m(1280x720)[90m[39m
+2026-04-23T22:45:47.7157422Z [90m [39m    [0mn.cy.js/US002 - Login na plataforma -- CT-US002-01 - deve realizar login com cre[0m               
+2026-04-23T22:45:47.7158713Z [90m [39m    [0mdenciais validas (failed).png[0m                                                                  
+2026-04-23T22:45:47.7159322Z 
+2026-04-23T22:45:47.7183871Z 
+2026-04-23T22:45:47.7193263Z [36m  ([4m[1mVideo[22m[24m)[39m
+2026-04-23T22:45:47.7193623Z 
+2026-04-23T22:45:47.7195115Z   -  Video output: [36m/home/runner/work/ebac-tcc-qe/ebac-tcc-qe/automation/UI/cypress/videos/login.cy.js.mp4[39m
+2026-04-23T22:45:47.7196458Z 
+2026-04-23T22:45:47.7200610Z 
+2026-04-23T22:45:47.7212468Z [90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m
+2026-04-23T22:45:47.7219996Z                                                                                                     
+2026-04-23T22:45:47.7221499Z   Running:  [90mregister.cy.js[39m                                                                  [90m(5 of 5)[39m
+2026-04-23T22:45:49.2918928Z 
+2026-04-23T22:45:49.2921074Z [0m[0m
+2026-04-23T22:45:49.2954522Z [0m  US004 - Registration[0m
+2026-04-23T22:45:56.9672802Z   [32m  ✓[0m[90m CT-US004-01 - should register a new user successfully[0m[90m (7653ms)[0m
+2026-04-23T22:45:59.4738248Z   [32m  ✓[0m[90m CT-US004-02 - should show an error when email is missing[0m[90m (2462ms)[0m
+2026-04-23T22:46:02.8129405Z   [32m  ✓[0m[90m CT-US004-03 - should show an error when password is missing[0m[90m (3233ms)[0m
+2026-04-23T22:46:02.8150382Z 
+2026-04-23T22:46:02.8301545Z 
+2026-04-23T22:46:02.8304617Z [92m [0m[32m 3 passing[0m[90m (14s)[0m
+2026-04-23T22:46:02.8305568Z 
+2026-04-23T22:46:03.8588701Z 
+2026-04-23T22:46:03.8589599Z [32m  ([4m[1mResults[22m[24m)[39m
+2026-04-23T22:46:03.8595229Z 
+2026-04-23T22:46:03.8610137Z [90m  ┌[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m┐[39m
+2026-04-23T22:46:03.8616111Z [90m  │[39m [90mTests:[39m        [32m3[39m                                                                                [90m│[39m
+2026-04-23T22:46:03.8617524Z [90m  │[39m [90mPassing:[39m      [32m3[39m                                                                                [90m│[39m
+2026-04-23T22:46:03.8618858Z [90m  │[39m [90mFailing:[39m      [32m0[39m                                                                                [90m│[39m
+2026-04-23T22:46:03.8620120Z [90m  │[39m [90mPending:[39m      [32m0[39m                                                                                [90m│[39m
+2026-04-23T22:46:03.8621479Z [90m  │[39m [90mSkipped:[39m      [32m0[39m                                                                                [90m│[39m
+2026-04-23T22:46:03.8622791Z [90m  │[39m [90mScreenshots:[39m  [32m0[39m                                                                                [90m│[39m
+2026-04-23T22:46:03.8624021Z [90m  │[39m [90mVideo:[39m        [32mtrue[39m                                                                             [90m│[39m
+2026-04-23T22:46:03.8625232Z [90m  │[39m [90mDuration:[39m     [32m13 seconds[39m                                                                       [90m│[39m
+2026-04-23T22:46:03.8629316Z [90m  │[39m [90mSpec Ran:[39m     [32m[32mregister.cy.js[32m[39m                                                                   [90m│[39m
+2026-04-23T22:46:03.8636093Z [90m  └[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m┘[39m
+2026-04-23T22:46:03.8640762Z 
+2026-04-23T22:46:03.8662420Z 
+2026-04-23T22:46:03.8663034Z [36m  ([4m[1mVideo[22m[24m)[39m
+2026-04-23T22:46:03.8663580Z 
+2026-04-23T22:46:03.8664540Z   -  Video output: [36m/home/runner/work/ebac-tcc-qe/ebac-tcc-qe/automation/UI/cypress/videos/register.cy.js.mp4[39m
+2026-04-23T22:46:03.8666754Z 
+2026-04-23T22:46:03.8686939Z 
+2026-04-23T22:46:03.9040536Z [90m====================================================================================================[39m
+2026-04-23T22:46:03.9041106Z 
+2026-04-23T22:46:03.9041315Z [0m  ([4m[1mRun Finished[22m[24m)[0m
+2026-04-23T22:46:03.9058297Z 
+2026-04-23T22:46:03.9058305Z 
+2026-04-23T22:46:03.9080203Z [90m   [39m    [90mSpec[39m                                              [90mTests[39m  [90mPassing[39m  [90mFailing[39m  [90mPending[39m  [90mSkipped[39m [90m [39m
+2026-04-23T22:46:03.9085473Z [90m  ┌[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m┐[39m
+2026-04-23T22:46:03.9089639Z [90m  │[39m [32m✔[39m  [0madd-to-cart.cy.js[0m                        [90m01:50[39m        [0m4[0m        [32m4[39m        [90m-[39m        [90m-[39m        [90m-[39m [90m│[39m
+2026-04-23T22:46:03.9094113Z [90m  ├[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m┤[39m
+2026-04-23T22:46:03.9098076Z [90m  │[39m [31m✖[39m  [0mdetalhes-conta.cy.js[0m                     [90m00:16[39m        [0m1[0m        [90m-[39m        [31m1[39m        [90m-[39m        [90m-[39m [90m│[39m
+2026-04-23T22:46:03.9103728Z [90m  ├[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m┤[39m
+2026-04-23T22:46:03.9107414Z [90m  │[39m [32m✔[39m  [0me2e-purchase-flow.cy.js[0m                  [90m01:21[39m        [0m1[0m        [32m1[39m        [90m-[39m        [90m-[39m        [90m-[39m [90m│[39m
+2026-04-23T22:46:03.9111013Z [90m  ├[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m┤[39m
+2026-04-23T22:46:03.9114187Z [90m  │[39m [32m✔[39m  [0mlogin.cy.js[0m                              [90m00:45[39m        [0m4[0m        [32m4[39m        [90m-[39m        [90m-[39m        [90m-[39m [90m│[39m
+2026-04-23T22:46:03.9119964Z [90m  ├[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m┤[39m
+2026-04-23T22:46:03.9126327Z [90m  │[39m [32m✔[39m  [0mregister.cy.js[0m                           [90m00:13[39m        [0m3[0m        [32m3[39m        [90m-[39m        [90m-[39m        [90m-[39m [90m│[39m
+2026-04-23T22:46:03.9133198Z [90m  └[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m─[39m[90m┘[39m
+2026-04-23T22:46:03.9139864Z [90m   [39m [31m✖[39m  [31m1 of 5 failed (20%)[39m                      [90m04:27[39m       [0m13[0m       [32m12[39m        [31m1[39m        [90m-[39m        [90m-[39m [90m [39m
+2026-04-23T22:46:03.9140752Z 
+2026-04-23T22:46:04.0269219Z ##[error]The process '/usr/local/bin/npm' failed with exit code 1
+2026-04-23T22:46:04.0391293Z ##[group]Run actions/upload-artifact@v4
+2026-04-23T22:46:04.0391589Z with:
+2026-04-23T22:46:04.0391774Z   name: ui-evidence
+2026-04-23T22:46:04.0392197Z   path: automation/UI/cypress/screenshots
+automation/UI/cypress/videos
+automation/UI/cypress/downloads
+
+2026-04-23T22:46:04.0392707Z   if-no-files-found: ignore
+2026-04-23T22:46:04.0392931Z   retention-days: 14
+2026-04-23T22:46:04.0393138Z   compression-level: 6
+2026-04-23T22:46:04.0393344Z   overwrite: false
+2026-04-23T22:46:04.0393549Z   include-hidden-files: false
+2026-04-23T22:46:04.0393766Z env:
+2026-04-23T22:46:04.0393992Z   BASE_URL: http://lojaebac.ebaconline.art.br
+2026-04-23T22:46:04.0394327Z   COUPONS_PATH: /wp-json/wc/v3/coupons
+2026-04-23T22:46:04.0394586Z   API_BASIC_USER: admin_ebac
+2026-04-23T22:46:04.0394828Z   API_BASIC_PASS: @admin!&b@c!2022
+2026-04-23T22:46:04.0395059Z   CI: 1
+2026-04-23T22:46:04.0395268Z   CYPRESS_CACHE_FOLDER: /home/runner/.cache/Cypress
+2026-04-23T22:46:04.0395591Z   npm_config_cache: /home/runner/.npm
+2026-04-23T22:46:04.0396124Z   TERM: xterm
+2026-04-23T22:46:04.0396306Z ##[endgroup]
+2026-04-23T22:46:04.2577434Z Multiple search paths detected. Calculating the least common ancestor of all paths
+2026-04-23T22:46:04.2580454Z The least common ancestor is /home/runner/work/ebac-tcc-qe/ebac-tcc-qe/automation/UI/cypress. This will be the root directory of the artifact
+2026-04-23T22:46:04.2581820Z With the provided path, there will be 9 files uploaded
+2026-04-23T22:46:04.2585294Z Artifact name is valid!
+2026-04-23T22:46:04.2586797Z Root directory input is valid!
+2026-04-23T22:46:04.4526878Z Beginning upload of artifact content to blob storage
+2026-04-23T22:46:05.2762166Z Uploaded bytes 8388608
+2026-04-23T22:46:05.6605195Z Uploaded bytes 16777216
+2026-04-23T22:46:05.7886569Z Uploaded bytes 18410705
+2026-04-23T22:46:05.8298649Z Finished uploading artifact content to blob storage!
+2026-04-23T22:46:05.8302599Z SHA256 digest of uploaded artifact zip is ffa629c803e2fad1136ac71e787f733b8b5bf835265b34ff92359bd94e956d3f
+2026-04-23T22:46:05.8304103Z Finalizing artifact upload
+2026-04-23T22:46:05.9632041Z Artifact ui-evidence.zip successfully finalized. Artifact ID 6613665634
+2026-04-23T22:46:05.9633349Z Artifact ui-evidence has been successfully uploaded! Final size is 18410705 bytes. Artifact ID is 6613665634
+2026-04-23T22:46:05.9640683Z Artifact download URL: https://github.com/Lucasviggiano/ebac-tcc-qe/actions/runs/24862474315/artifacts/6613665634
+2026-04-23T22:46:05.9808505Z Post job cleanup.
+2026-04-23T22:46:06.0751628Z [command]/usr/bin/git version
+2026-04-23T22:46:06.0787228Z git version 2.53.0
+2026-04-23T22:46:06.0829353Z Temporarily overriding HOME='/home/runner/work/_temp/a72b703f-5214-4a2f-a075-1d1416ac75a3' before making global git config changes
+2026-04-23T22:46:06.0830701Z Adding repository directory to the temporary git global config as a safe directory
+2026-04-23T22:46:06.0834782Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/ebac-tcc-qe/ebac-tcc-qe
+2026-04-23T22:46:06.0869299Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-04-23T22:46:06.0901444Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-04-23T22:46:06.1118007Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-04-23T22:46:06.1137487Z http.https://github.com/.extraheader
+2026-04-23T22:46:06.1149359Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-04-23T22:46:06.1178842Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-04-23T22:46:06.1389951Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-04-23T22:46:06.1419521Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-04-23T22:46:06.1734503Z Cleaning up orphan processes
+2026-04-23T22:46:06.2022629Z ##[warning]Node.js 20 actions are deprecated. The following actions are running on Node.js 20 and may not work as expected: actions/checkout@v4, actions/upload-artifact@v4, cypress-io/github-action@v6. Actions will be forced to run with Node.js 24 by default starting June 2nd, 2026. Node.js 20 will be removed from the runner on September 16th, 2026. Please check if updated versions of these actions are available that support Node.js 24. To opt into Node.js 24 now, set the FORCE_JAVASCRIPT_ACTIONS_TO_NODE24=true environment variable on the runner or in your workflow file. Once Node.js 24 becomes the default, you can temporarily opt out by setting ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
