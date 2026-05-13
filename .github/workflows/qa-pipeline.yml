@@ -28,6 +28,8 @@ on:
 
 permissions:
   contents: read
+  pages: write
+  id-token: write
 
 concurrency:
   group: qa-pipeline-${{ github.workflow }}-${{ github.ref }}
@@ -125,54 +127,165 @@ jobs:
           if-no-files-found: ignore
           retention-days: 14
 
-  performance-tests:
-    name: Performance Tests - k6
-    if: ${{ github.event_name != 'workflow_dispatch' || inputs.run_performance }}
+  publish-report:
+    name: Publish QA Report - GitHub Pages
+    needs:
+      - api-tests
+      - ui-tests
+    if: always()
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 10
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Setup k6
-        uses: grafana/setup-k6-action@v1
-
-      - name: Prepare report and log folders
-        run: |
-          mkdir -p performance/k6/reports
-          mkdir -p reports/ci/performance
-
-      - name: Run k6 scenarios (login + catalog)
+      - name: Generate static QA report
         shell: bash
         env:
-          HTTP_PROXY: ""
-          HTTPS_PROXY: ""
-          ALL_PROXY: ""
-          NO_PROXY: lojaebac.ebaconline.art.br,localhost,127.0.0.1,::1
+          PROJECT_NAME: ${{ github.event.repository.name }}
+          RUN_DATE_UTC: ${{ github.run_started_at }}
+          COMMIT_SHA: ${{ github.sha }}
+          BRANCH_NAME: ${{ github.ref_name }}
+          API_STATUS: ${{ needs.api-tests.result }}
+          UI_STATUS: ${{ needs.ui-tests.result }}
+          PERFORMANCE_STATUS: not-configured
         run: |
-          set +e
-          k6 run --summary-export=performance/k6/reports/login-summary.json performance/k6/login-performance.js 2>&1 | tee reports/ci/performance/k6-login.log
-          LOGIN_EXIT=${PIPESTATUS[0]}
+          mkdir -p public
 
-          k6 run --summary-export=performance/k6/reports/catalog-summary.json performance/k6/catalog-performance.js 2>&1 | tee reports/ci/performance/k6-catalog.log
-          CATALOG_EXIT=${PIPESTATUS[0]}
+          normalize_status() {
+            case "$1" in
+              success|failure|cancelled|skipped) echo "$1" ;;
+              *) echo "unknown" ;;
+            esac
+          }
 
-          echo "K6_LOGIN_EXIT=$LOGIN_EXIT" >> $GITHUB_ENV
-          echo "K6_CATALOG_EXIT=$CATALOG_EXIT" >> $GITHUB_ENV
+          status_class() {
+            case "$1" in
+              success) echo "ok" ;;
+              failure|cancelled) echo "error" ;;
+              skipped|unknown) echo "warn" ;;
+              *) echo "warn" ;;
+            esac
+          }
 
-          if [ "$LOGIN_EXIT" -ne 0 ] || [ "$CATALOG_EXIT" -ne 0 ]; then
-            exit 1
+          API_STATUS="$(normalize_status "$API_STATUS")"
+          UI_STATUS="$(normalize_status "$UI_STATUS")"
+          PERFORMANCE_STATUS="$(normalize_status "$PERFORMANCE_STATUS")"
+
+          OVERALL_STATUS="success"
+          for STATUS in "$API_STATUS" "$UI_STATUS" "$PERFORMANCE_STATUS"; do
+            if [ "$STATUS" = "failure" ] || [ "$STATUS" = "cancelled" ]; then
+              OVERALL_STATUS="failure"
+              break
+            fi
+            if [ "$STATUS" = "skipped" ] || [ "$STATUS" = "unknown" ]; then
+              OVERALL_STATUS="partial"
+            fi
+          done
+
+          OVERALL_CLASS="ok"
+          if [ "$OVERALL_STATUS" = "failure" ]; then
+            OVERALL_CLASS="error"
+          elif [ "$OVERALL_STATUS" = "partial" ]; then
+            OVERALL_CLASS="warn"
           fi
 
-      - name: Upload performance evidence
-        if: always()
-        uses: actions/upload-artifact@v4
+          cat > public/index.html <<HTML
+          <!doctype html>
+          <html lang="pt-BR">
+          <head>
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <title>QA Report - ${PROJECT_NAME}</title>
+            <style>
+              :root {
+                --bg: #f6f8fa;
+                --card: #ffffff;
+                --text: #1f2937;
+                --muted: #6b7280;
+                --ok-bg: #dcfce7;
+                --ok-text: #166534;
+                --warn-bg: #fef3c7;
+                --warn-text: #92400e;
+                --error-bg: #fee2e2;
+                --error-text: #991b1b;
+              }
+              body { margin: 0; padding: 24px; font-family: Arial, sans-serif; background: var(--bg); color: var(--text); }
+              .container { max-width: 900px; margin: 0 auto; }
+              .card { background: var(--card); border-radius: 12px; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); margin-bottom: 16px; }
+              h1, h2 { margin-top: 0; }
+              ul { padding-left: 18px; }
+              .pill { display: inline-block; padding: 4px 10px; border-radius: 999px; font-weight: 700; text-transform: uppercase; font-size: 12px; }
+              .ok { background: var(--ok-bg); color: var(--ok-text); }
+              .warn { background: var(--warn-bg); color: var(--warn-text); }
+              .error { background: var(--error-bg); color: var(--error-text); }
+              .meta { color: var(--muted); line-height: 1.7; }
+              table { width: 100%; border-collapse: collapse; }
+              th, td { text-align: left; border-bottom: 1px solid #e5e7eb; padding: 10px 6px; }
+            </style>
+          </head>
+          <body>
+            <div class="container">
+              <div class="card">
+                <h1>Relatorio de Qualidade - ${PROJECT_NAME}</h1>
+                <p>Status geral:
+                  <span class="pill ${OVERALL_CLASS}">${OVERALL_STATUS}</span>
+                </p>
+                <div class="meta">
+                  <div><strong>Data da execucao:</strong> ${RUN_DATE_UTC}</div>
+                  <div><strong>Commit SHA:</strong> ${COMMIT_SHA}</div>
+                  <div><strong>Branch:</strong> ${BRANCH_NAME}</div>
+                </div>
+              </div>
+
+              <div class="card">
+                <h2>Suites executadas</h2>
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Suite</th>
+                      <th>Status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>API (Jest/Supertest)</td>
+                      <td><span class="pill $(status_class "$API_STATUS")">${API_STATUS}</span></td>
+                    </tr>
+                    <tr>
+                      <td>UI (Cypress)</td>
+                      <td><span class="pill $(status_class "$UI_STATUS")">${UI_STATUS}</span></td>
+                    </tr>
+                    <tr>
+                      <td>Performance (k6)</td>
+                      <td><span class="pill $(status_class "$PERFORMANCE_STATUS")">${PERFORMANCE_STATUS}</span></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div class="card">
+                <h2>Observacoes</h2>
+                <ul>
+                  <li>As evidencias completas (logs, videos, screenshots e summaries) ficam nos artifacts da execucao no GitHub Actions.</li>
+                  <li>Falhas de teste nao sao mascaradas nos jobs principais; este relatorio apenas consolida os resultados da execucao.</li>
+                </ul>
+              </div>
+            </div>
+          </body>
+          </html>
+          HTML
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          name: performance-evidence
-          path: |
-            performance/k6/reports
-            reports/ci/performance
-          if-no-files-found: ignore
-          retention-days: 14
+          path: public
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
 
